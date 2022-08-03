@@ -1,1 +1,31 @@
 
+// C++ code
+//
+int BUZZER_PIN = 13;
+int IRSense_PIN = 2;
+
+int motionDetect = LOW;
+
+void setup()
+{
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(IRSense_PIN, INPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  motionDetect = digitalRead(IRSense_PIN);
+  Serial.println(motionDetect);
+  
+  if(motionDetect == HIGH){
+    digitalWrite(BUZZER_PIN, HIGH);
+    Serial.println("BUZZ BUZZ ");
+  }
+  if(motionDetect == LOW){
+    digitalWrite(BUZZER_PIN, LOW);
+    Serial.println("... ");
+  }
+  
+  delay(500);
+}
